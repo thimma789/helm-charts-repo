@@ -18,8 +18,8 @@ jobs:
       # Step 2: Make changes to the CODEOWNERS file
       - name: Update CODEOWNERS file
         run: |
-          echo "# Updated CODEOWNERS file" >> .github/CODEOWNERS
-          echo "thimma203" >> .github/CODEOWNERS
+          echo "# Updated CODEOWNERS file" >> .github/workflows/CODEOWNERS
+          echo "thimma2034" >> .github/workflows/CODEOWNERS
 
       # Step 3: Commit the changes
       - name: Commit changes
@@ -32,7 +32,5 @@ jobs:
       # Step 4: Push the changes to the repository
       - name: Push changes
         run: |
-          git add CODEOWNERS
-          git commit -m "updated"
           git push origin feature/workflow-test
         
