@@ -31,6 +31,8 @@ jobs:
 
       # Step 4: Push the changes to the repository
       - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
         run: |
-          git push origin feature/workflow-test
+          git push
         
