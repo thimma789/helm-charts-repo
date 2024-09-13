@@ -32,7 +32,7 @@ jobs:
           git add .github/workflows/CODEOWNERS
           git commit -m "Update CODEOWNERS file automatically"
 
-      # Step 4: Push the changes to the repository
+      # Step 4: Push the changes to the repository test
       # - name: Push changes
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
