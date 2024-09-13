@@ -42,6 +42,6 @@ jobs:
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Use Personal Access Token with workflow permissions
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/owner/repo.git
+        #  git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/owner/repo.git
           git push origin ${{ github.ref }}
         
