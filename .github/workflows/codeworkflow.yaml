@@ -19,7 +19,7 @@ jobs:
       - name: Update CODEOWNERS file
         run: |
           echo "# Updated CODEOWNERS file" >> .github/CODEOWNERS
-          echo "thimma2034" >> .github/CODEOWNERS
+          echo "@thimma2034" >> .github/CODEOWNERS
 
       # Step 3: Commit the changes
       - name: Commit changes
