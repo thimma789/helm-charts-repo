@@ -4,7 +4,7 @@ name: Update CODEOWNERS
 on:
   push:
     branches:
-      - feature/update-code
+      - feature/workflow-test
 
 jobs:
   update-codeowners:
