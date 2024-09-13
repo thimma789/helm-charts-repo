@@ -31,6 +31,8 @@ jobs:
 
       # Step 4: Push the changes to the repository
       - name: Push changes
-        uses: ad-m/github-push-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add CODEOWNERS
+          git commit -m "updated"
+          git push origin feature/workflow-test
+        
