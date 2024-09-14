@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add CODEOWNERS
+          git add ./github/CODEOWNERS
           git commit -m "Update CODEOWNERS for ${{ github.ref_name }} environment"
       
       - name: Push changes
