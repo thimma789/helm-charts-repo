@@ -1,0 +1,41 @@
+name: Update CODEOWNERS Based on Environment
+
+on:
+  push:
+    branches:
+      - dev
+      - simu
+      - prod
+
+jobs:
+  update-codeowners:
+    name: Update CODEOWNERS for the Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Git configuration
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update CODEOWNERS file
+        run: |
+          # Determine the environment based on the branch
+          if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+            echo "@thimmadev" > .github/CODEOWNERS
+          elif [ "${{ github.ref }}" == "refs/heads/simu" ] || [ "${{ github.ref }}" == "refs/heads/prod" ]; then
+            echo "@thimmasimuprod" > .github/CODEOWNERS
+          # elif [ "${{ github.ref }}" == "refs/heads/prod" ]; then
+          #   cp codeowners-templates/CODEOWNERS-prod CODEOWNERS
+          fi
+
+      - name: Commit changes
+        run: |
+          git add .github/CODEOWNERS
+          git commit -m "Update CODEOWNERS for ${{ github.ref_name }} environment"
+      
+      - name: Push changes
+        run: git push origin ${{ github.ref_name }}
