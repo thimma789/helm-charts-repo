@@ -18,7 +18,7 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: Enforce correct codeowners
-      run: >
+      run: |
         # Fetch current branch
 
         branch=$(git rev-parse -- abbrev-ref HEAD)
