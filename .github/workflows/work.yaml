@@ -54,8 +54,8 @@ jobs:
       - name: Commit and Push the changes
         run: |
 
-          EMAIL=${{ github.actor }}
-          git config --global user.email "$EMAIL"
+          NAME=${{ github.actor }}
+          git config --global user.name "$NAME"
           git add CODEOWNERS
           git commit -m "updated codeowners for branch $branch"
 
