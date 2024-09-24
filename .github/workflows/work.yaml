@@ -6,67 +6,48 @@ on:
       - dev
       - simu
       - prod
+      - main
+
 jobs:
   update-codeowners:
     runs-on: ubuntu-latest
-    env:
-      GH_USER: ${{secrets.GH_USER}}
-      GH_TOKEN: ${{secrets.GH_TOKEN}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
+
       - name: Enforce correct codeowners
         run: |
           # Fetch current branch
-
-          branch=$(git rev-parse -- abbrev-ref HEAD)
-
-          echo "branch detected: $branch"
-
-
+          branch=$(git rev-parse --abbrev-ref HEAD)
+          echo "Branch detected: $branch"
           touch CODEOWNERS
-
-
-          #Check which branch we are on
-
+          # Check which branch we are on
           if [[ "$branch" == "dev" ]]; then
             echo "Updating code owners for DEV branch"
-            echo "* @CCP-IT/ea-it-admin @CCP-IT/ea-itgov - Updated on $(date)" > CODEOWNERS
-          elif [[ "$branch" == "simu" | | "$branch" == "prod" ]]; then
+            echo "* @reddy789 @reddy786 - Updated on $(date)" > CODEOWNERS
+          elif [[ "$branch" == "simu" || "$branch" == "prod" ]]; then
             echo "Updating code owners for Simu/Prod branch"
-            echo "* @CCP-IT/ea-it-admin" > CODEOWNERS
+            echo "* @reddy789" > CODEOWNERS
           fi
-
-          echo "Current working directory : $(pwd)"
-
-          echo "verifying codeowners file ... "
-
+          echo "Current working directory: $(pwd)"
+          echo "Verifying CODEOWNERS file..."
           ls -la
-
-
           if [ -f CODEOWNERS ]; then
             echo "CODEOWNERS file created successfully"
             cat CODEOWNERS
-
           else
             echo "CODEOWNERS file not created"
             exit 1
           fi
-
-
-          echo "checking git status ... "
-
+          echo "Checking git status..."
           git status
-
-          #Commit and push the changes
       - name: Commit and Push the changes
         run: |
+          NAME=${{ github.actor }}
+          git config --global user.name "$NAME"
           git add CODEOWNERS
-
           git commit -m "updated codeowners for branch $branch"
-
-          git remore set-url origin https://x-access-token:${{GITHUB_TOKEN}}@github.com/${{ github.repository }}.git
-
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push origin $branch
