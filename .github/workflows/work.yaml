@@ -29,10 +29,10 @@ jobs:
           # Check which branch we are on
           if [[ "$branch" == "dev" ]]; then
             echo "Updating code owners for DEV branch"
-            echo "* @CCP-IT/ea-it-admin @CCP-IT/ea-itgov - Updated on $(date)" > CODEOWNERS
+            echo "* @reddy789 @reddy786 - Updated on $(date)" > CODEOWNERS
           elif [[ "$branch" == "simu" || "$branch" == "prod" ]]; then
             echo "Updating code owners for Simu/Prod branch"
-            echo "* @CCP-IT/ea-it-admin" > CODEOWNERS
+            echo "* @reddy789" > CODEOWNERS
           fi
 
           echo "Current working directory: $(pwd)"
