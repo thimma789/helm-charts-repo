@@ -55,6 +55,7 @@ jobs:
         run: |
 
           EMAIL=${{ github.actor }}
+          git config --global user.email "$EMAIL"
           git add CODEOWNERS
           git commit -m "updated codeowners for branch $branch"
 
