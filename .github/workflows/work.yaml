@@ -6,6 +6,7 @@ on:
       - dev
       - simu
       - prod
+      - main
 
 jobs:
   update-codeowners:
