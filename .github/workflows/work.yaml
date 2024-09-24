@@ -9,14 +9,16 @@ on:
 jobs:
   update-codeowners:
     runs-on: ubuntu-latest
-
-    steps:
+  env:
+    GH_USER: ${{secrets.GH_USER}}
+    GH_TOKEN: ${{secrets.GH_TOKEN}}
+  steps:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
         ref: ${{ github.ref }}
     - name: Enforce correct codeowners
-      run: >
+      run: |
         # Fetch current branch
 
         branch=$(git rev-parse -- abbrev-ref HEAD)
