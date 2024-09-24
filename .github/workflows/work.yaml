@@ -53,6 +53,9 @@ jobs:
 
       - name: Commit and Push the changes
         run: |
+
+          git config --global user.email "thimmamr91@gmail.com"
+          git config --global user.name "thimma789"
           git add CODEOWNERS
           git commit -m "updated codeowners for branch $branch"
 
