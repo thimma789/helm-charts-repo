@@ -9,8 +9,10 @@ on:
 jobs:
   update-codeowners:
     runs-on: ubuntu-latest
-
-    steps:
+  env:
+    GH_USER: ${{secrets.GH_USER}}
+    GH_TOKEN: ${{secrets.GH_TOKEN}}
+  steps:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
