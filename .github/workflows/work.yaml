@@ -60,7 +60,6 @@ jobs:
 
           git status
 
-
           #Commit and push the changes
       - name: Commit and Push the changes
         run: |
